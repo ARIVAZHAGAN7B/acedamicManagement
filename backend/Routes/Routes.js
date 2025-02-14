@@ -15,11 +15,11 @@ const { Assignments } = require("../Models/Students/Assignments");
 router.post("/addfaculty",AddFaculty);
 router.post("/addclasses",AddClasses);
 router.delete("/deletefaculty",DeleteFaculty);
-router.put("/addassignments",AddAssignments);
-router.put("/updatemarks",UpdateMarks);
+router.post("/addassignments",AddAssignments);
+router.post("/updatemarks",UpdateMarks);
 router.get("/allstudents",AllStudents);
-router.get("/classes",Classes);
-router.get("/marks",Marks);
-router.get("/assignments",Assignments);
+router.get("/classes/:name",Classes);
+router.get("/marks/:name",Marks);
+router.get("/assignments/:className",Assignments);
 
 module.exports = router;

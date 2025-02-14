@@ -10,13 +10,13 @@ import UpdateMarks from "../Pages/Faculty/UpdateMarks/UpdateMarks";
 import AllStudents from "../Pages/Faculty/AllStudents/AllStudents";
 import Login from "../Pages/Login/Login";
 import Home from "../Pages/Student/Home/Home";
-const AppLayout = ({ role }) => {
+const AppLayout = ({ role,userdata}) => {
   return (
     <Routes>
       <Route path="/login" element={<Login/>}/>
       {role === "admin" && (
         <>
-          <Route path="/admin/addfaculty" element={<AddFaculty />} />
+          <Route path="/admin" element={<AddFaculty />} />
           <Route path="/admin/addclasses" element={<AddClasses />} />
           <Route path="/admin/deletefaculty" element={<DeleteFaculty />} />
         </>
@@ -24,8 +24,8 @@ const AppLayout = ({ role }) => {
 
       {role === "student" && (
         <>
-        <Route path="/student/home" element={<Home/>}/>
-          <Route path="/student/marks" element={<Marks />} />
+        <Route path="/student" element={<Home/>}/>
+          <Route path="/student/marks" element={<Marks name={userdata.name} />}  />
           <Route path="/student/assignments" element={<Assignments />} />
         </>
       )}
@@ -33,7 +33,7 @@ const AppLayout = ({ role }) => {
 
       {role === "faculty" && (
         <>
-          <Route path="/faculty/classes" element={<Classes />} />
+          <Route path="/faculty" element={<Classes name={userdata.name} />}  />
           <Route path="/faculty/addassignments" element={<AddAssignments />} />
           <Route path="/faculty/updatemarks" element={<UpdateMarks />} />
           <Route path="/faculty/allstudents" element={<AllStudents />} />

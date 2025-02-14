@@ -3,7 +3,7 @@ const AddFaculty = async (req, res) => {
     try {
         const {name,password,role} = req.body;
         const query = `insert into auth(username,password,role) values (?,?,?)`;
-        const [result] = pool.query(query,[name,password,role]);
+        const [result] = await pool.query(query,[name,password,role]);
         res.status(200).json({ message: "Faculty added successfully",added:{name:name,role:role}});
     } catch (error) {
         console.error("Error adding faculty:", error);

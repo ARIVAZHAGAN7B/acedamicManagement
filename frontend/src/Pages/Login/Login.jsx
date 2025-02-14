@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-
-function Login({ setRole }) {
+import {useNavigate} from "react-router-dom"
+function Login({ setRole,setUserdata }) {
+  const Navigate = useNavigate();
   const [credentials, setCredentials] = useState({ username: "", password: "" });
 
   const handleChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setCredentials({
+      ...credentials,
+      [e.target.name]:e.target.value
+    });
   };
 
   const handleLogin = async () => {
@@ -16,11 +20,11 @@ function Login({ setRole }) {
       });
 
       const data = await response.json();
-
       if (response.ok) {
-        setRole(data.role); 
+        setRole(data.role);
+        setUserdata({name:data.username});
         localStorage.setItem("userRole", data.role);
-        window.location.reload(); // Refresh to load the correct UI
+        Navigate(`/${data.role}`);
       } else {
         alert("Invalid credentials");
       }
@@ -30,11 +34,13 @@ function Login({ setRole }) {
   };
 
   return (
-    <div>
+    <div className="main-div">
       <h2>Login Page</h2>
-      <input type="text" name="username" placeholder="Username" onChange={handleChange} />
-      <input type="password" name="password" placeholder="Password" onChange={handleChange} />
-      <button onClick={handleLogin}>Login</button>
+      <div className="input-div">
+      <input type="text" name="username" placeholder="Username" value={credentials.username}onChange={handleChange} className="input-tag"/>
+      <input type="password" name="password" placeholder="Password" value={credentials.password} onChange={handleChange} className="input-tag"/>
+      <button onClick={handleLogin} className="submit-btn">Login</button>
+      </div>
     </div>
   );
 }

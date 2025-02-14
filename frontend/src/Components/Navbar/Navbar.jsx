@@ -32,17 +32,17 @@ const Navbar = () => {
   
   const menus = {
     admin: [
-      { name: "Add Faculty", path: "/admin/addfaculty" },
+      { name: "Add Faculty", path: "/admin" },
       { name: "Add Classes", path: "/admin/addclasses" },
       { name: "Delete Faculty", path: "/admin/deletefaculty" },
     ],
     student: [
-      { name: "Home", path: "/student/home" },
+      { name: "Home", path: "/student" },
       { name: "Marks", path: "/student/marks" },
       { name: "Assignments", path: "/student/assignments" },
     ],
     faculty: [
-      { name: "Classes", path: "/faculty/classes" },
+      { name: "Classes", path: "/faculty" },
       { name: "Add Assignments", path: "/faculty/addassignments" },
       { name: "Update Marks", path: "/faculty/updatemarks" },
       { name: "View All Students", path: "/faculty/allstudents" },

@@ -6,7 +6,7 @@ import Login from "./Pages/Login/Login";
 
 function App() {
   const [role, setRole] = useState(localStorage.getItem("userRole") || null);
-
+  const [userdata,setUserdata] = useState({name:"",class:""}); 
   useEffect(() => {
     if (role) {
       localStorage.setItem("userRole", role);
@@ -16,11 +16,11 @@ function App() {
   return (
     <BrowserRouter>
       {!role ? (
-        <Login setRole={setRole} />
+        <Login setRole={setRole} setUserdata={setUserdata} />
       ) : (
         <>
-          <Navbar role={role} />
-          <AppLayout role={role} />
+          <Navbar role={role} userdata={userdata} />
+          <AppLayout role={role} userdata={userdata} />
         </>
       )}
     </BrowserRouter>
