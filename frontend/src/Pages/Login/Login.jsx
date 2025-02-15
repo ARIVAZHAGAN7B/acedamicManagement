@@ -23,6 +23,7 @@ function Login({ setRole,setUserdata }) {
       if (response.ok) {
         setRole(data.role);
         setUserdata({name:data.username});
+        setUserdata({class:data.classs});
         localStorage.setItem("userRole", data.role);
         Navigate(`/${data.role}`);
       } else {
