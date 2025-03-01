@@ -13,12 +13,11 @@ function Login({ setRole,setUserdata }) {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("http://localhost:5050/login", {
+      const response = await fetch ("http://localhost:5050/login",{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),
-      });
-
+      })
       const data = await response.json();
       if (response.ok) {
         setRole(data.role);
